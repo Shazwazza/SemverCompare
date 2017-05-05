@@ -1,0 +1,18 @@
+﻿.semver-form, .semver-form .input-group {
+    width: 100%;
+}
+.semver-form div.input-group {
+    margin-bottom: 20px;
+}
+
+.report {
+    width: 50%;
+}
+
+.report .list-group-item {
+    font-size: 1.5em;
+}
+
+.report .list-group-item span.error {
+    color: #c9302c;
+}
