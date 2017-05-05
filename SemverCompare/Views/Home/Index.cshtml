@@ -6,11 +6,10 @@
 
     <div>
         <h1>Semver Compare</h1>
-        <p class="lead">Compare different <a href="http://semver.org/" target="_blank">Semver</a> versions so you definitely know which ones is bigger</p>
+        <p class="lead">Compare different <a href="http://semver.org/" target="_blank">Semver</a> versions - <em>handy when you just aren't sure about those pre-release names</em></p>        
     </div>
 
     <div>
-
         <form class="semver-form">
             <div class="input-group" ng-repeat="v in semverCompare.versions track by $index">
                 <input type="text" class="form-control" placeholder="Example: 2.3.4-beta01" ng-model="v.version">
@@ -41,5 +40,8 @@
             </li>
         </ol>
     </div>
-
+    
+    <div>
+        <p><a href="https://github.com/Shazwazza/SemverCompare">Source code on GitHub</a></p>
+    </div>
 </div>
