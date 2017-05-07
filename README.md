@@ -1,5 +1,5 @@
 # SemverCompare
-A simple site to compare Semver versions - _handy for testing those confusing rules for pre-release name_
+A website compare Semver versions - _handy for testing those confusing rules for pre-release name_
 
 ## [http://semvercompare.azurewebsites.net](http://semvercompare.azurewebsites.net)
 

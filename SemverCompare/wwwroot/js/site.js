@@ -33,7 +33,7 @@
 
         hotkeys.bindTo($scope).add({
             combo: ['alt+a'],
-            description: 'Adds an row to compare',
+            description: 'Adds a row to compare',
             allowIn: ['INPUT'],
             callback: function (event, hotkey) {
                 semverCompare.add();
