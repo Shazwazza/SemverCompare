@@ -7,15 +7,16 @@ namespace SemverCompare.Controllers
     {
         [JsonIgnore]
         public SemVersion Version { get; }
-        public string Value { get; }
-        public int Index { get; }
+        public string Value { get; }        
+        public int OriginalIndex { get; }
         public bool IsValid { get; }
+        public int ResultIndex { get; set; }
 
-        public CompareResult(SemVersion version, string value, int index)
+        public CompareResult(SemVersion version, string value, int originalIndex)
         {
             Version = version;
             Value = value;
-            Index = index;
+            OriginalIndex = originalIndex;
             IsValid = version != null;
         }
     }

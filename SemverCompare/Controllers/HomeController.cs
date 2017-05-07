@@ -32,6 +32,21 @@ namespace SemverCompare.Controllers
                 return r1.Version.CompareTo(r2.Version);                
             });
 
+            var resultIndex = -1;
+            SemVersion previousResult = null;
+            foreach (var compareResult in result)
+            {
+                if (compareResult.Version != null)
+                {                    
+                    if (previousResult != compareResult.Version)
+                    {                        
+                        resultIndex++;
+                        previousResult = compareResult.Version;
+                    }
+                    compareResult.ResultIndex = resultIndex;
+                }
+            }
+
             return result;
         }
     }

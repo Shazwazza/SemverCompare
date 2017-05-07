@@ -1,47 +1,77 @@
-﻿@{
+﻿@using System
+@{
 
 }
 
-<div class="container" ng-controller="SemverCompareController as semverCompare">
-
-    <div>
-        <h1>Semver Compare</h1>
-        <p class="lead">Compare different <a href="http://semver.org/" target="_blank">Semver</a> versions - <em>handy when you just aren't sure about those pre-release names</em></p>        
-    </div>
-
-    <div>
-        <form class="semver-form">
-            <div class="input-group" ng-repeat="v in semverCompare.versions track by $index">
-                <input type="text" class="form-control" placeholder="Example: 2.3.4-beta01" ng-model="v.version">
-                <span class="input-group-btn">
-                    <button class="btn btn-danger" type="button" ng-click="semverCompare.remove($index)"><i class="fa fa-times"></i></button>
-                </span>
-            </div>
-
-            <div class="input-group">
-                <button type="button" class="btn btn-default" ng-click="semverCompare.add()">Add</button>
-                <button type="submit" class="btn btn-info pull-right" ng-click="semverCompare.compare()">Compare</button>
-            </div>
-        </form>
-
-    </div>
-    
-    <div ng-if="semverCompare.report" class="panel panel-default report">
-        <!-- Default panel contents -->
-        <div class="panel-heading">Results</div>
-        <div class="panel-body">
-            <p>The results of the Semver comparison from lowest to highest version</p>
+<div ng-controller="SemverCompareController as semverCompare">
+    <header class="bg-color5 color-white">
+        <div class="container">
+            <h1>Semver Compare</h1>
+            <p>
+                <span class="lead">Utility to compare different <a href="http://semver.org/" target="_blank">semver</a> versions</span>
+                <br /><em>handy for testing those confusing pre-release name rules</em>
+            </p>
         </div>
+    </header>
 
-        <!-- List group -->
-        <ol class="list-group">
-            <li class="list-group-item" ng-repeat="item in semverCompare.report track by $index">
-                <span class="badge">{{$index + 1}}</span><span ng-class="{error: !item.isValid}">{{item.value}}</span>
-            </li>
-        </ol>
-    </div>
-    
-    <div>
-        <p><a href="https://github.com/Shazwazza/SemverCompare">Source code on GitHub</a></p>
-    </div>
+    <main>
+        <div class="body container">
+            <div class="middle">
+                <form name="compareForm" class="semver-form" ng-submit="semverCompare.compare()">
+                    <div class="input-group" ng-repeat="v in semverCompare.versions track by $index">
+                        <input type="text" class="form-control" placeholder="Example: 2.3.4-beta01"
+                               ng-model="v.version"
+                               required
+                               auto-focus>
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning" type="button" ng-click="semverCompare.remove($index)" title="Remove" ng-disabled="$index === 0">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </span>
+                    </div>
+
+                    <div class="input-group">
+                        <button type="button" class="btn btn-default" ng-click="semverCompare.add()">Add</button>
+                        <button type="submit" class="btn btn-primary pull-right">Compare</button>
+                    </div>
+                </form>
+
+                <div ng-if="semverCompare.report" class="panel panel-default report">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Results</div>
+                    <div class="panel-body">
+                        <p>The results of the Semver comparison from lowest to highest version</p>
+                    </div>
+
+                    <!-- List group -->
+                    <ol class="list-group">
+                        <li class="list-group-item" ng-repeat="item in semverCompare.report track by $index">
+                            <span class="value" ng-class="{error: !item.isValid}">{{item.value}}</span>
+                            <span class="badge" ng-class="{'bg-color1': !item.isValid, 'bg-color4' : item.isValid}">
+                                <span ng-if="!item.isValid">x</span>
+                                <span ng-if="item.isValid">{{item.resultIndex + 1}}</span>
+                            </span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">            
+            <button type="button" class="btn btn-default btn-sm pull-right" title="View hotkeys or press '?'" ng-click="semverCompare.toggleHelp()">
+                <small>Hotkeys?</small>
+                <i class="fa fa-keyboard-o"></i>
+            </button>
+            <p class="info">
+                <small>
+                    This site uses <a href="https://github.com/maxhauser/semver">https://github.com/maxhauser/semver</a> to perform the semver parsing and comparisons
+                </small>
+            </p>
+            <p>
+                <small>&copy; <a href="https://github.com/shazwazza" target="_blank">Shannon Deminick</a>&nbsp;@DateTime.Now.Year</small>
+            </p>
+        </div>
+    </footer>
 </div>

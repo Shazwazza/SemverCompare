@@ -57,8 +57,11 @@ namespace SemverCompare
 
             app.UseSmidge(bundles =>
             {
-                bundles.Create("my-js", WebFileType.Js, "~/js/site.js");
-                bundles.Create("my-css", WebFileType.Css, "~/css/site.css");
+                bundles.Create("my-js", WebFileType.Js, 
+                    "~/lib/angular-hotkeys/build/hotkeys.min.js", "~/js/site.js");
+
+                bundles.Create("my-css", WebFileType.Css, 
+                    "~/lib/angular-hotkeys/build/hotkeys.min.css", "~/css/site.css");
             });
         }
     }
