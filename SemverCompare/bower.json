@@ -1,0 +1,22 @@
+{
+  "name": "SemverCompare",
+  "homepage": "https://github.com/Shazwazza/SemverCompare",
+  "authors": [
+    "Shannon Deminick"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "wwwroot/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-hotkeys": "chieffancypants/angular-hotkeys#^1.7.0"
+  }
+}

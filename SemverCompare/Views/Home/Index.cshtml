@@ -1,6 +1,24 @@
 ﻿@using System
+@using System.Net
+@model string[]
 @{
 
+}
+
+@section PreJavaScript
+{
+    <script type="text/javascript">
+        document.angularReady = function(app) {
+
+            app.value("initVersions",
+                [
+                    @foreach (var v in Model)
+                    {
+                        <text>"@v",</text>
+                    }
+                ]);
+        }
+    </script>
 }
 
 <div ng-controller="SemverCompareController as semverCompare">
